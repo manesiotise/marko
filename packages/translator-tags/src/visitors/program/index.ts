@@ -7,7 +7,7 @@ import {
   isOutputDOM,
   isOutputHTML,
 } from "../../util/marko-config";
-import { finalizeIntersections } from "../../util/references";
+import { finalizeReferences } from "../../util/references";
 import { assignFinalIds } from "../../util/reserve";
 import { startSection } from "../../util/sections";
 import programDOM from "./dom";
@@ -42,7 +42,7 @@ export default {
 
     exit() {
       assignFinalIds();
-      finalizeIntersections();
+      finalizeReferences();
       currentProgramPath = previousProgramPath.get(currentProgramPath)!;
     },
   },

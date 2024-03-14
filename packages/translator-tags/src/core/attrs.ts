@@ -1,7 +1,7 @@
 import type { Tag } from "@marko/babel-utils";
 import { types as t } from "@marko/compiler";
 import { isOutputHTML } from "../util/marko-config";
-import { trackReferencesForBindings } from "../util/references";
+import { trackReferencesForBinding } from "../util/references";
 import { getOrCreateSection } from "../util/sections";
 import { initValue } from "../util/signals";
 import { currentProgramPath } from "../visitors/program";
@@ -23,7 +23,7 @@ export default {
         string,
         t.Identifier
       >;
-      trackReferencesForBindings(getOrCreateSection(tag), varPath);
+      trackReferencesForBinding(getOrCreateSection(tag), varPath);
       (currentProgramPath.node.extra ??= {}).args = {
         bindings,
         var: isOutputHTML() ? varPath.node! : t.arrayPattern([varPath.node!]),
